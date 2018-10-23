@@ -1,1 +1,1 @@
-# poc-automation-wdio-ios-project
+# poc-automation-ios-project
