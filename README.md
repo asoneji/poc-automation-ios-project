@@ -1,1 +1,1 @@
-# poc-automation-ios-project
+# sample-automation-ios-project
