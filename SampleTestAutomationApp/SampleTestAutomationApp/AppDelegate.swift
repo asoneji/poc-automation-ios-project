@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  sample-test-automation-ios-app
+//  SampleTestAutomationApp
 //
 //  Created by Soneji, Ankit on 10/23/18.
 //  Copyright © 2018 Soneji, Ankit. All rights reserved.

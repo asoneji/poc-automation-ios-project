@@ -1,6 +1,6 @@
 //
-//  sample_test_automation_ios_appUITests.swift
-//  sample-test-automation-ios-appUITests
+//  SampleTestAutomationAppUITests.swift
+//  SampleTestAutomationAppUITests
 //
 //  Created by Soneji, Ankit on 10/23/18.
 //  Copyright © 2018 Soneji, Ankit. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class sample_test_automation_ios_appUITests: XCTestCase {
+class SampleTestAutomationAppUITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
