@@ -1,1 +1,1 @@
-# sample-automation-ios-project
+# sample-test-automation-ios-project
