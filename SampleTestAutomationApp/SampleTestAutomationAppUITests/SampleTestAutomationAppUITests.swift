@@ -9,7 +9,7 @@
 import XCTest
 
 class SampleTestAutomationAppUITests: XCTestCase {
-
+    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
 
@@ -26,9 +26,60 @@ class SampleTestAutomationAppUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testAllFieldsExists() {
+        let app = XCUIApplication()
+        
+        XCTAssert(app.staticTexts["Sample Test Automation"].exists)
+        XCTAssert(app.staticTexts["Message:"].exists)
+        XCTAssert(app.staticTexts["Received:"].exists)
+        
+        XCTAssert(app.textFields["sendMessageTextField"].exists)
+        XCTAssert(app.textFields["receivedMessageTextField"].exists)
+        XCTAssert(app.buttons["Send"].exists)
+        XCTAssert(app.buttons["Clear"].exists)
     }
 
+    func testSendMessage() {
+        let app = XCUIApplication()
+        
+        let messageToSend = "Hello World! - " + getCurrentDateAndTime()
+        let sendMessageTextField = app.textFields["sendMessageTextField"]
+        sendMessageTextField.tap()
+        sendMessageTextField.typeText(messageToSend)
+        app.buttons["Send"].tap()
+        
+        let receivedMessageTextField = app.textFields["receivedMessageTextField"]
+        
+        XCTAssertEqual(receivedMessageTextField.value as! String, messageToSend, "Message sent not as expected")
+    }
+
+    func testClearMessage() {
+        let app = XCUIApplication()
+        
+        let messageToSend = "Hello World! - " + getCurrentDateAndTime()
+        let sendMessageTextField = app.textFields["sendMessageTextField"]
+        sendMessageTextField.tap()
+        sendMessageTextField.typeText(messageToSend)
+        app.buttons["Clear"].tap()
+        
+        let receivedMessageTextField = app.textFields["receivedMessageTextField"]
+        
+        XCTAssertEqual(receivedMessageTextField.value as! String, "", "Message not cleared")
+        XCTAssertEqual(sendMessageTextField.value as! String, "", "Message not cleared")
+        
+    }
+    
+    func getCurrentDateAndTime() -> String {
+        
+        // get the current date and time
+        let currentDateTime = Date()
+        
+        // initialize the date formatter and set the style
+        let formatter = DateFormatter()
+        formatter.timeStyle = .medium
+        formatter.dateStyle = .short
+        
+        // get the date time String from the date object
+        return formatter.string(from: currentDateTime)
+    }
 }
